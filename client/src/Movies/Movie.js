@@ -34,7 +34,7 @@ function Movie({ addToSavedList }) {
 
   return (
     <Wrapper>
-      <MovieCard movie={movie} saveMovie={saveMovie}/>
+      <MovieCard movie={movie}/>
       <Buttons>
         <button onClick={saveMovie}>
           Save
