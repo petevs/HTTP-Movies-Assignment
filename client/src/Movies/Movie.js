@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import MovieCard from "./MovieCard";
+import styled from 'styled-components'
 
 function Movie({ addToSavedList }) {
   const [movie, setMovie] = useState(null);
   const params = useParams();
+  const history = useHistory();
 
   const fetchMovie = (id) => {
     axios
@@ -18,6 +20,10 @@ function Movie({ addToSavedList }) {
     addToSavedList(movie);
   };
 
+  const updateMovie = () => {
+    history.push(`/update-movie/${params.id}`)
+  }
+
   useEffect(() => {
     fetchMovie(params.id);
   }, [params.id]);
@@ -27,14 +33,33 @@ function Movie({ addToSavedList }) {
   }
 
   return (
-    <div className="save-wrapper">
-      <MovieCard movie={movie} />
-
-      <div className="save-button" onClick={saveMovie}>
-        Save
-      </div>
-    </div>
+    <Wrapper>
+      <MovieCard movie={movie} saveMovie={saveMovie}/>
+      <Buttons>
+        <button onClick={saveMovie}>
+          Save
+        </button>
+        <button onClick={updateMovie}>
+          Update
+        </button>
+        <button onClick={saveMovie}>
+          Delete
+        </button>
+      </Buttons>
+    </Wrapper>
   );
 }
 
 export default Movie;
+
+const Wrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+`
+
+const Buttons = styled.div`
+  display: grid;
+  grid-auto-flow: column;
+  gap: .5rem;
+`
