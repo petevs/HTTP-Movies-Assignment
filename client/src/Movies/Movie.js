@@ -70,4 +70,5 @@ const Buttons = styled.div`
   display: grid;
   grid-auto-flow: column;
   gap: .5rem;
+  margin-top: 1rem;
 `
