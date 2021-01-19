@@ -1,10 +1,11 @@
 import React from 'react';
+import styled from 'styled-components'
 
 const MovieCard = props => {
   const { title, director, metascore, stars, saveMovie } = props.movie;
 
   return (
-    <div className="movie-card">
+    <Card>
       <h2>{title}</h2>
       <div className="movie-director">
         Director: <em>{director}</em>
@@ -19,8 +20,15 @@ const MovieCard = props => {
           {star}
         </div>
       ))}
-    </div>
+    </Card>
   );
 };
 
 export default MovieCard;
+
+const Card = styled.div`
+  display: grid;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  padding: 2rem;
+`
