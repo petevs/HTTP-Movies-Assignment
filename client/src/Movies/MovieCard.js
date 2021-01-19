@@ -31,4 +31,5 @@ const Card = styled.div`
   border: 1px solid #ccc;
   background-color: #fff;
   padding: 2rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,.35);
 `
